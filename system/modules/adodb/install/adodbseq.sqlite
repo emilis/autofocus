@@ -1,0 +1,4 @@
+drop table adodbseq;
+create table adodbseq (id integer primary key);
+insert into adodbseq values(1);
+
