@@ -1,8 +1,7 @@
 ABOUT
 
-A to-do app based on the autofocus technique described in this article:
-...
-
+A to-do app based on the autofocus time management system described by Mark Forester:
+http://www.markforster.net/autofocus-index/
 
 LICENSE
 
