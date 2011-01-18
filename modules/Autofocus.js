@@ -1,6 +1,9 @@
 
 var gluestick = require("gluestick");
 var TaskLists = require("Autofocus/TaskLists");
+var Tasks = require("Autofocus/Tasks");
+var Log = require("Autofocus/Log");
+
 
 // Extend module:
 gluestick.extendModule(exports, "ctl/Controller");
@@ -30,7 +33,27 @@ exports.showList = function(req) {
     var id = req.params.id || 1;
 
     var list = TaskLists.read(id);
+    var tasks = Tasks.list({ list_id: id });
+    var log = Log.list({ list_id: id}, { limit: 50 });
 
     return this.returnHtml("showList", {
-            list: list
+            list: list,
+            tasks: tasks,
+            log: log
             });
+};
+
+
+/**
+ *
+ */
+exports.addList = function(req) {
+    var tlist = {};
+
+    tlist.title = req.params.title;
+
+    var id = TaskLists.write(false, tlist);
+    
+    return this.WebMapper.redirect(module.id, "showList", { id: id });
+}
+

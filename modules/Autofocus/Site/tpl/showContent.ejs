@@ -2,15 +2,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Autofocus: Work</title>
+        <title>Autofocus: <%= vars.title %></title>
         <link rel="stylesheet" type="text/css" href="/static/Autofocus/Autofocus.css">
         <script src="/static/jquery/jquery.js"></script>
         <script src="/static/Autofocus/Autofocus.js"></script>
     </head>
     <body>
-        <div id="header"><a href="#" id="logo">Autofocus</a>
+        <div id="header"><a href="<%= config.URLS.root %>/" id="logo">Autofocus</a>
             <ul id="menu">
-                <li><a href="#">About</a></li>
+                <li><a href="<%= config.URLS.root %>/pages/about">About</a></li>
             </ul>
         </div>
         <div id="lists"><%= vars.content %></div>

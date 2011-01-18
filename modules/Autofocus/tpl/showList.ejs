@@ -1,0 +1,48 @@
+<%
+
+var {list, tasks, log} = vars;
+
+%><ul id="list-selector">
+    <li class="active"><a href="#">Work</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Other</a></li>
+</ul>
+<div id="list">
+    <div id="tasks">
+        <h2>Tasks</h2>
+        <table id="task-table"><tbody><%
+
+            for each (var task in tasks) {
+                print('<tr id="task-', task.id, '"><td>', task.title, '</td>');
+                print('<td>...</td>');
+                print('</tr>');
+            }
+
+        %></tbody>
+        <tfoot>
+            <tr id="add-task">
+                <td colspan="2">
+                    <small>Add new task:</small><br>
+                    <input id="task-title" name="task-title"><br>
+                    <input type="button" value="Add" onclick="autofocus.add()">
+                </td>
+            </tr>
+        </tfoot></table>
+    </div>
+    <div id="log">
+        <h2>Log</h2>
+        <table id="log-table"><tbody><%
+
+            for each (var entry in log) {
+                print('<tr>');
+                print('<td class="time">', entry.time, '</td>');
+                print('<td class="action">', entry.action, '</td>');
+                print('<td>', entry.details, '</td>');
+                print('</tr>');
+            }
+
+        %>
+        </tbody></table>
+    </div>
+</div>
+
