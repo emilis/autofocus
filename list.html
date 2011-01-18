@@ -4,6 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Autofocus: Work</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery.js"></script>
+        <script src="autofocus.js"></script>
     </head>
     <body>
         <div id="header"><a href="#" id="logo">Autofocus</a>
@@ -21,50 +23,16 @@
                 <div id="tasks">
                     <h2>Tasks</h2>
                     <table id="task-table"><tbody>
-                        <tr id="task-1">
-                            <td>Better diff UI
-                                </td>
-                            <td class="actions">
-                                <a class="done">D</a>
-                                <a class="later">L</a>
-                                <a class="remove">R</a>
-                            </td>
-                        </tr>
-                        <tr id="task-2">
-                            <td>Script to auto-update laws
-                                </td>
-                            <td class="actions">
-                                <a class="done">D</a>
-                                <a class="later">L</a>
-                                <a class="remove">R</a>
-                            </td>
-                        </tr>
-                        <tr id="task-1">
-                            <td>Reduce feed check errors
-                                </td>
-                            <td class="actions">
-                                <a class="done">D</a>
-                                <a class="later">L</a>
-                                <a class="remove">R</a>
-                            </td>
-                        </tr>
-                        <tr id="task-1">
-                            <td>Auto-fail pages
-                                </td>
-                            <td class="actions">
-                                <a class="done">D</a>
-                                <a class="later">L</a>
-                                <a class="remove">R</a>
-                            </td>
-                        </tr>
+                    </tbody>
+                    <tfoot>
                         <tr id="add-task">
                             <td colspan="2">
                                 <small>Add new task:</small><br>
                                 <input id="task-title" name="task-title"><br>
-                                <input type="button" value="Add">
+                                <input type="button" value="Add" onclick="autofocus.add()">
                             </td>
                         </tr>
-                    </tbody></table>
+                    </tfoot></table>
                 </div>
                 <div id="log">
                     <h2>Log</h2>

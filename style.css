@@ -2,6 +2,7 @@ body {
     background-color: black;
     color: white;
     font-family: Arial, sans-serif;
+    padding: 0em 1em 1em;
 }
 
 #header {
@@ -11,10 +12,10 @@ body {
 
     #logo {
         float: left;
-        padding: 0.2em 6em 0.5em 1em;
+        padding: 0em 12em 0.5em 0.5em;
         color: white;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: bold;
         font-family: serif;
         font-style: italic;
@@ -111,11 +112,14 @@ body {
                             color: black;
                         }
 
-                #add-task > td {
-                    background-color: #ccc;
-                    border: 1px solid blue;
-                    padding: 0.5em;
+                #task-table > tfoot {
+                    padding-top: 1em;
                 }
+                    #add-task > td {
+                        background-color: #ccc;
+                        border: 1px solid blue;
+                        padding: 0.5em;
+                    }
 
         #log {
             margin-left: 1em;
