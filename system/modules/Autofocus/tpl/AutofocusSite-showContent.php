@@ -13,7 +13,7 @@
                 <li><a href="#">About</a></li>
             </ul>
         </div>
-        <div id="lists"><?php
+        <div id="content"><?php
 
             echo $html;
 
