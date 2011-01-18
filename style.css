@@ -1,0 +1,143 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#header {
+    height: 40px;
+    border-bottom: 2px solid #CCC;
+}
+
+    #logo {
+        float: left;
+        padding: 0.2em 6em 0.5em 1em;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: serif;
+        font-style: italic;
+    }
+
+    #menu {
+        list-style: none;
+    }
+
+        #menu > li {
+            display: inline;
+            float: left;
+            padding: 0.5em 1em;
+        }
+
+            #menu > li > a {
+                color: white;
+            }
+
+#lists {
+    clear: both;
+    margin-top: 20px;
+}
+
+    #list-selector {
+        list-style: none;
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+        #list-selector > li {
+            display: inline;
+            padding: 0.2em 0.5em;
+            margin: 0;
+            background-color: #ccc;
+            border: 2px solid #999;
+        }
+
+        #list-selector > li.active {
+            background-color: white;
+            border-bottom: 2px solid white;
+        }
+
+    #list {
+        clear: both;
+        background-color: white;
+        color: black;
+        border: 2px solid #999;
+        padding: 1em;
+        margin-top: 3px;
+        min-height: 500px;
+    }
+
+            #list > div > h2 {
+                margin: 0px 0px 0.5em;
+            }
+
+        #tasks {
+            width: 400px;
+            float: left;
+            padding-right: 1em;
+            border-right: 1px dotted #999;
+            margin-right: 1em;
+        }
+
+            #task-table {
+                width: 100%;
+            }
+
+                    #task-table > tbody > tr > td {
+                        border-bottom: 1px dotted #999;
+                    }
+
+                    td.actions {
+                        text-align: right;
+                    }
+
+                        a.done {
+                            padding: 0.2em 0.5em;
+                            background-color: green;
+                            color: white;
+                        }
+
+                        a.later {
+                            padding: 0.2em 0.5em;
+                            background-color: yellow;
+                            color: #333;
+                        }
+
+                        a.remove {
+                            padding: 0.2em 0.5em;
+                            background-color: red;
+                            color: black;
+                        }
+
+                #add-task > td {
+                    background-color: #ccc;
+                    border: 1px solid blue;
+                    padding: 0.5em;
+                }
+
+        #log {
+            margin-left: 1em;
+        }
+
+            #log-table > tbody > tr > td {
+                border-bottom: 1px dotted #999;
+            }
+
+                #log-table > tbody > tr > td > h3 {
+                    margin: 0px;
+                }
+
+            td.time {
+                font-size: 80%;
+                color: #999;
+            }
+
+            td.added {
+                color: #999;
+            }
+
+            td.done {
+                color: green;
+            }
