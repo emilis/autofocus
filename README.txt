@@ -8,6 +8,9 @@ USAGE
 Linux: In the project directory:
     $ bin/start.sh
 
+Then point your browser to:
+http://localhost:8080/
+
 LICENSE
 
 This application is free software (c) 2011 Emilis Dambauskas under GNU Affero General Public License.
