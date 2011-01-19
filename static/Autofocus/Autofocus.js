@@ -1,7 +1,7 @@
 /*
     Copyright 2011 Emilis Dambauskas
 
-    This file is part of Autofocus application.
+    This file is part of Autofocus module.
 
     Autofocus is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
