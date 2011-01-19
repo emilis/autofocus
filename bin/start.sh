@@ -11,5 +11,5 @@ java \
     -jar "$LIB_DIR/run.jar"\
     -D ringo.home="$LIB_DIR/ringo.jar"\
     -e "require.paths.push('$CONFIG_DIR')"\
-    -i "$MODULES_DIR/start-www.js" 
+    "$MODULES_DIR/start-www.js" 
 
