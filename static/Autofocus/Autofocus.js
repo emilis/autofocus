@@ -29,6 +29,7 @@ var autofocus = (function () {
 
     api.add = function() {
         api.write(false, {
+            list_id: jQuery("#list-id").val(),
             title: jQuery("#task-title").val()
             });
         jQuery("#task-title").val("");
@@ -37,10 +38,65 @@ var autofocus = (function () {
 
     api.write = function(id, obj) {
 
-        id = id || 1;
-
-        jQuery("#task-table > tbody").append('<tr id="task-' + id + '"><td>' + obj.title + '</td>' + action_td + '</tr>');
+        jQuery.post("/", {
+                call: "Autofocus/Api.tasks_write",
+                id: id,
+                data: obj
+            }, function (data) {
+                jQuery("#task-table > tbody").append('<tr id="task-' + data + '"><td>' + obj.title + '</td>' + action_td + '</tr>');
+                api.checkLog();
+            }, "json");
     };
+
+    api.checkLog = function() {
+        jQuery.post("/", {
+                call: "Autofocus/Api.log_list",
+                filter: {
+                    list_id: jQuery("#list-id").val()
+                },
+                options: {
+                    order: { time: -1 }
+                },
+            }, function (data) {
+                var html = "";
+                for each (var entry in data) {
+                    html += '<tr>';
+                    html += '<td class="time">' + entry.time.substr(11, 5) + '</td>';
+                    html += '<td class="' + entry.action + '">' + entry.action + '</td>';
+                    html += '<td>' + entry.details + '</td>';
+                    html += '</tr>';
+                }
+
+                jQuery("#log-table > tbody").html(html);
+            }, "json");
+    };
+
+    api.init = function() {
+        // Map actions to task buttons:
+        ["done", "later", "remove"].map(function (action) {
+            jQuery("a." + action).live("click", function () {
+                var id = this.parentNode.parentNode.id.split("-").pop();
+                jQuery.post("/", {
+                        call: "Autofocus/Api.tasks_action",
+                        id: id,
+                        action: action
+                    }, function(data) {
+                        id = "#task-" + id;
+                        if (action != "later") {
+                            jQuery(id).remove();
+                        } else {
+                            var html = '<tr id="' + id.substr(1) + '">' + jQuery(id).html() + '</tr>';
+                            jQuery(id).remove();
+                            jQuery("#task-table > tbody").append(html);
+                        }
+                        api.checkLog();
+                    });
+                });
+            });
+        }
 
     return api;
 })();
+
+
+jQuery(document).ready(autofocus.init);

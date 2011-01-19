@@ -1,20 +1,29 @@
 <%
 
-var {list, tasks, log} = vars;
+var {list, lists, tasks, log} = vars;
 
-%><ul id="list-selector">
-    <li class="active"><a href="#">Work</a></li>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Other</a></li>
+%><ul id="list-selector"><%
+
+    for each (var tlist in lists) {
+        print('<li');
+        if (tlist.id == list.id) {
+            print(' class="active"');
+        }
+        print('><a href="/?call=Autofocus.showList&id=', tlist.id, '">', tlist.title, '</a></li>');
+    }
+
+%>
 </ul>
 <div id="list">
     <div id="tasks">
         <h2>Tasks</h2>
         <table id="task-table"><tbody><%
 
+            var action_td = '<td class="actions"><a class="done">D</a><a class="later">L</a><a class="remove">R</a></td>';
+
             for each (var task in tasks) {
                 print('<tr id="task-', task.id, '"><td>', task.title, '</td>');
-                print('<td>...</td>');
+                print(action_td);
                 print('</tr>');
             }
 
@@ -22,9 +31,11 @@ var {list, tasks, log} = vars;
         <tfoot>
             <tr id="add-task">
                 <td colspan="2">
-                    <small>Add new task:</small><br>
-                    <input id="task-title" name="task-title"><br>
-                    <input type="button" value="Add" onclick="autofocus.add()">
+                    <form onsubmit="autofocus.add(); return false;">
+                        <small>Add new task:</small><br>
+                        <input id="task-title" name="task-title"><br>
+                        <input type="hidden" id="list-id" name="list-id" value="<%= list.id %>">
+                    </form>
                 </td>
             </tr>
         </tfoot></table>
@@ -35,8 +46,8 @@ var {list, tasks, log} = vars;
 
             for each (var entry in log) {
                 print('<tr>');
-                print('<td class="time">', entry.time, '</td>');
-                print('<td class="action">', entry.action, '</td>');
+                print('<td class="time">', entry.time.getHours(), ':', entry.time.getMinutes(), '</td>');
+                print('<td class="', entry.action, '">', entry.action, '</td>');
                 print('<td>', entry.details, '</td>');
                 print('</tr>');
             }

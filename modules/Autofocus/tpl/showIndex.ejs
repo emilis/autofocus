@@ -1,18 +1,40 @@
 <%
 
-var {lists} = vars;
+var {lists, log} = vars;
 lists = lists || [];
+log = log || [];
 
-%><ul><%
+%>
+<div id="list">
+    <div id="tasks">
+        <h2>Task lists:</h2>
+        <ul><%
 
-for each (var list in lists) {
-    print('<li><a href="/?call=Autofocus.showList&id=', list.id, '">', list.title, '</a></li>');
-}
+        for each (var list in lists) {
+            print('<li><a href="/?call=Autofocus.showList&id=', list.id, '">', list.title, '</a></li>');
+        }
 
-%></ul>
+        %></ul>
 
-<form method="post" action="/">
-<input type="hidden" name="call" value="Autofocus.addList">
-<input name="title">
-<br><input type="submit" value="+ Add list">
-</form>
+        <form method="post" action="/">
+        <input type="hidden" name="call" value="Autofocus.addList">
+        <input id="title" name="title">
+        <br><input type="submit" value="+ Add list">
+        </form>
+    </div>
+    <div id="log">
+        <h2>Combined log:</h2>
+        <table id="log-table"><tbody><%
+
+            for each (var entry in log) {
+                print('<tr>');
+                print('<td class="time">', entry.time.getHours(), ':', entry.time.getMinutes(), '</td>');
+                print('<td class="', entry.action, '">', entry.action, '</td>');
+                print('<td>', entry.details, '</td>');
+                print('</tr>');
+            }
+
+        %>
+        </tbody></table>
+    </div>
+</div>

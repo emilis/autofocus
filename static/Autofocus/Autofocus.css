@@ -49,10 +49,11 @@ body {
 
         #list-selector > li {
             display: inline;
-            padding: 0.2em 0.5em;
+            padding: 0.2em 1em;
             margin: 0;
-            background-color: #ccc;
-            border: 2px solid #999;
+            background-color: #ecf0eb;
+            border: 1px solid #d3d7cf;
+            margin: 0px 2px;
         }
 
         #list-selector > li.active {
@@ -60,11 +61,15 @@ body {
             border-bottom: 2px solid white;
         }
 
+            #list-selector > li > a {
+                text-decoration: none;
+            }
+
     #list {
         clear: both;
         background-color: white;
         color: black;
-        border: 2px solid #999;
+        border: 2px solid #888a85;
         padding: 1em;
         margin-top: 3px;
         min-height: 500px;
@@ -78,7 +83,7 @@ body {
             width: 400px;
             float: left;
             padding-right: 1em;
-            border-right: 1px dotted #999;
+            border-right: 1px dotted #888a85;
             margin-right: 1em;
         }
 
@@ -87,46 +92,50 @@ body {
             }
 
                     #task-table > tbody > tr > td {
-                        border-bottom: 1px dotted #999;
+                        border-bottom: 1px dotted #888a85;
+                    }
+
+                    #task-table > tbody > tr:hover > td {
+                        background-color: #feffd0;
                     }
 
                     td.actions {
                         text-align: right;
                     }
 
-                        a.done {
+                        td.actions > a {
                             padding: 0.2em 0.5em;
-                            background-color: green;
-                            color: white;
+                            cursor: pointer;
+                            font-weight: bold;
                         }
 
-                        a.later {
-                            padding: 0.2em 0.5em;
-                            background-color: yellow;
-                            color: #333;
-                        }
+                        a.done      { color: #4e9a06; }
+                        a.later     { color: #888a85; }
+                        a.remove    { color: #cc0000; }
 
-                        a.remove {
-                            padding: 0.2em 0.5em;
-                            background-color: red;
-                            color: black;
-                        }
+                        a.done:hover    { background-color: #4e9a06; color: white; }
+                        a.later:hover   { background-color: #edd400; color: #333; }
+                        a.remove:hover  { background-color: #cc0000; color: black; }
 
                 #task-table > tfoot {
                     padding-top: 1em;
                 }
                     #add-task > td {
-                        background-color: #ccc;
-                        border: 1px solid blue;
+                        background-color: #D3D7CF;
+                        border: 1px solid #888A85;
                         padding: 0.5em;
                     }
+
+                        #task-title {
+                            width: 98%;
+                        }
 
         #log {
             margin-left: 1em;
         }
 
             #log-table > tbody > tr > td {
-                border-bottom: 1px dotted #999;
+                border-bottom: 1px dotted #888a85;
             }
 
                 #log-table > tbody > tr > td > h3 {
@@ -134,14 +143,14 @@ body {
                 }
 
             td.time {
-                font-size: 80%;
-                color: #999;
+                font-family: monospace;
+                font-size: 90%;
+                color: #888a85;
+                text-align: right;
+                padding-right: 0.5em;
             }
 
-            td.added {
-                color: #999;
-            }
-
-            td.done {
-                color: green;
-            }
+            td.added    { color: #666; }
+            td.done     { color: #4e9a06; }
+            td.removed  { color: #cc0000; }
+            td.delayed  { color: #888a85; }

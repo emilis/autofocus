@@ -93,6 +93,7 @@ exports.gluestick = {
                 allowed: [
                     "Site",
                     "Autofocus",
+                    "Autofocus/Api"
                 ]
             }
         }

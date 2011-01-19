@@ -21,7 +21,8 @@ var log = require("ringo/logging").getLogger(module.id);
  */
 exports.showIndex = function(req) {
     return this.returnHtml("showIndex", {
-            lists: TaskLists.list()
+            lists: TaskLists.list(),
+            log: Log.list(undefined, { limit: 30, order: { time: -1 } })
             });
 }
 
@@ -33,13 +34,15 @@ exports.showList = function(req) {
     var id = req.params.id || 1;
 
     var list = TaskLists.read(id);
-    var tasks = Tasks.list({ list_id: id });
-    var log = Log.list({ list_id: id}, { limit: 50 });
+    if (!list) {
+        return this.showError(404);
+    }
 
     return this.returnHtml("showList", {
             list: list,
-            tasks: tasks,
-            log: log
+            lists: TaskLists.list(),
+            tasks: Tasks.list({ list_id: id }, { order: { reordered: 1 }}),
+            log: Log.list({ list_id: id}, { limit: 30, order: { time: -1 } })
             });
 };
 
