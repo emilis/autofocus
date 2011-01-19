@@ -5,6 +5,24 @@ body {
     padding: 0em 1em 1em;
 }
 
+a:link      { color: #204a87; }
+a:visited   { color: #0a3050; }
+
+.miniform {
+    background-color: #D3D7CF;
+    border: 1px solid #888A85;
+    padding: 0.5em;
+}
+
+    .miniform > label {
+        font-size: 75%;
+    }
+
+    .miniform > input {
+        width: 98%;
+    }
+
+
 #header {
     height: 40px;
     border-bottom: 2px solid #CCC;
