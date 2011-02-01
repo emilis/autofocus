@@ -62,7 +62,15 @@ var {list, lists, tasks, log} = vars;
     </div>
     <div id="log">
         <h2>Log</h2>
-        <table id="log-table"><tbody><%
+        <table id="log-table">
+	<thead><tr><td colspan="3">
+	    <form class="miniform" onsubmit="autofocus.log(this);return false;">
+	    	<small>Log status message:</small><br>
+		<input type="hidden" name="list-id" value="<%= list.id %>">
+		<input id="status-details" name="status-details">
+	    </form>
+	</td></tr></thead>
+	<tbody><%
 
             for each (var entry in log) {
                 print('<tr>');

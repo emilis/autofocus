@@ -48,6 +48,18 @@ var autofocus = (function () {
             }, "json");
     };
 
+    api.log = function(form) {
+
+    	jQuery.post("/", {
+		call: "Autofocus/Api.log_write",
+		list_id: form.elements["list-id"].value,
+		details: form.elements["status-details"].value
+	    }, function(data) {
+	    	form.elements["status-details"].value="";
+	        api.checkLog();
+	    }, "json");
+    };
+
     api.checkLog = function() {
         jQuery.post("/", {
                 call: "Autofocus/Api.log_list",

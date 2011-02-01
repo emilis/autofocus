@@ -172,3 +172,4 @@ a:visited   { color: #0a3050; }
             td.done     { color: #4e9a06; }
             td.removed  { color: #cc0000; }
             td.delayed  { color: #888a85; }
+	    td.status	{ color: #3465a4; }

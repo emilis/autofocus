@@ -127,3 +127,21 @@ exports.log_list = function(req) {
     return this.WebMapper.returnJson(
             Log.list(req.params.filter, req.params.options));
 }
+
+
+/**
+ *
+ */
+exports.log_write = function(req) {
+    var entry = {
+        list_id: req.params.list_id,
+	action: "status",
+	details: req.params.details
+    };
+
+    Log.write(false, entry);
+    return this.WebMapper.returnJson(true);
+}
+
+
+
