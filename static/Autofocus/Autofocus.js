@@ -24,6 +24,29 @@ var autofocus = (function () {
 
     var action_td = '<td class="actions"><a class="done">D</a><a class="later">L</a><a class="remove">R</a></td>';
 
+    var stringToArray = function(str) {
+	    var arr = str.trim().replace(/[- T:.Z]/g, "-").split("-").map(function (item) { return parseInt(item, 10); });
+	    
+	    for (var i=0;i<7;i++) {
+		if (!arr[i])
+		    arr[i] = 0;
+	    }
+
+	    return arr;
+	}
+
+    var fromUTCString = function(str) {
+
+	    if (str instanceof Date) {
+		return str;
+	    } else {
+		var arr = stringToArray(str);
+		arr[1]--; // prepare month value
+		return new Date(Date.UTC(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]));
+	    }
+	}
+
+
 
     api.getTaskTable = function () { return document.getElementById("tasks"); };
 
@@ -72,8 +95,9 @@ var autofocus = (function () {
             }, function (data) {
                 var html = "";
                 for each (var entry in data) {
+		    entry.time = fromUTCString(entry.time);
                     html += '<tr>';
-                    html += '<td class="time">' + entry.time.substr(11, 5) + '</td>';
+                    html += '<td class="time">' + entry.time.getHours() + ":" + entry.time.getMinutes() + '</td>';
                     html += '<td class="' + entry.action + '">' + entry.action + '</td>';
                     html += '<td>' + entry.details + '</td>';
                     html += '</tr>';
